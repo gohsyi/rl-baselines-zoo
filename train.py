@@ -23,7 +23,7 @@ try:
 except ImportError:
     mpi4py = None
 
-from stable_baselines.common import set_global_seeds, logger
+from stable_baselines.common import set_global_seeds
 from stable_baselines.common.cmd_util import make_atari_env
 from stable_baselines.common.vec_env import VecFrameStack, SubprocVecEnv, VecNormalize, DummyVecEnv
 from stable_baselines.common.noise import AdaptiveParamNoiseSpec, NormalActionNoise, OrnsteinUhlenbeckActionNoise
@@ -211,7 +211,6 @@ if __name__ == '__main__':
 
     log_path = "{}/{}/".format(args.log_folder, args.algo)
     save_path = os.path.join(log_path, "{}_{}{}".format(env_id, get_latest_run_id(log_path, env_id) + 1, uuid_str))
-    logger.configure(save_path)
     params_path = "{}/{}".format(save_path, env_id)
     os.makedirs(params_path, exist_ok=True)
 
